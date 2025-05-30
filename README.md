@@ -1,5 +1,5 @@
 
-# Qatra - Blood Donation App
+# 🩸 Qatra — Blood Donation App
 
 A full-stack blood donation application with a Laravel API backend and React frontend. The backend uses Laravel Sanctum for secure authentication.
 
