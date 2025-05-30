@@ -1,174 +1,77 @@
 
-# 🩸 Qatra — Blood Donation App
+# Qatra - Blood Donation App
 
-Qatra is a full-stack web application to coordinate blood donations. It is divided into:
+A full-stack blood donation application with a Laravel API backend and React frontend. The backend uses Laravel Sanctum for secure authentication.
 
-- **Backend:** Laravel RESTful API using Sanctum for authentication.
-- **Frontend:** React app that consumes the API.
+## Features
+- User registration and login with Laravel Sanctum (API token authentication)
+- Blood donation request management
+- React frontend with Axios for API calls
+- Responsive design and user-friendly interface
 
----
+## Prerequisites
 
-## 🗂 Project Structure
-
-```
-Qatra---Donnation-Blood/
-├── qatra-backend/    # Laravel API (Laravel 10+)
-└── qatra-frontend/   # React app (React 18+)
-```
-
----
-
-## 🚀 Getting Started
-
-This guide will help you set up the project locally on your machine.
-
----
-
-## ⚙️ Backend Setup (Laravel API)
-
-### Prerequisites
-
-- PHP >= 8.1
+- Node.js v22.15.1
+- PHP 8.1
 - Composer
-- MySQL or other supported DB
-- Node.js & npm (for Laravel Mix assets if used)
-- Laravel CLI (optional)
+- MySQL or any compatible database
 
-### Installation Steps
+## Backend Setup (Laravel API)
 
-1. **Navigate to the backend folder:**
+1. Clone the repository and navigate to the backend folder:
+   ```bash
+   git clone https://github.com/nourddine20/Qatra---Donnation-Blood.git
+   cd Qatra---Donnation-Blood/qatra-backend
+   ```
 
-```bash
-cd qatra-backend
-```
+2. Install PHP dependencies:
+   ```bash
+   composer install
+   ```
 
-2. **Install dependencies:**
+3. Copy the `.env.example` file to `.env` and configure your database and other settings:
+   ```bash
+   cp .env.example .env
+   ```
 
-```bash
-composer install
-```
+4. Generate the application key:
+   ```bash
+   php artisan key:generate
+   ```
 
-3. **Copy `.env` and configure environment:**
+5. Run migrations and seeders (if any):
+   ```bash
+   php artisan migrate --seed
+   ```
 
-```bash
-cp .env.example .env
-```
+6. Start the Laravel development server:
+   ```bash
+   php artisan serve
+   ```
 
-Then open `.env` and configure:
+## Frontend Setup (React)
 
-```env
-DB_DATABASE=your_db_name
-DB_USERNAME=your_db_user
-DB_PASSWORD=your_db_password
-SESSION_DOMAIN=localhost
-SANCTUM_STATEFUL_DOMAINS=localhost:3000
-```
+1. Navigate to the frontend folder:
+   ```bash
+   cd ../qatra-frontend
+   ```
 
-4. **Generate app key and storage link:**
+2. Install Node.js dependencies:
+   ```bash
+   npm install
+   ```
 
-```bash
-php artisan key:generate
-php artisan storage:link
-```
+3. Start the React development server:
+   ```bash
+   npm start
+   ```
 
-5. **Run database migrations (and seed if needed):**
+4. Open your browser at `http://localhost:3000`
 
-```bash
-php artisan migrate
-# php artisan db:seed (optional)
-```
+## Notes
 
-6. **Serve the backend API:**
-
-```bash
-php artisan serve
-```
-
-API runs on: `http://127.0.0.1:8000`
-
----
-
-## 🔐 Sanctum Setup Notes
-
-Ensure CORS and cookie setup work properly:
-
-- `SANCTUM_STATEFUL_DOMAINS=localhost:3000`
-- `SESSION_DOMAIN=localhost`
-- Enable credentials in CORS config if not already:
-
-**In `config/cors.php`:**
-
-```php
-'supports_credentials' => true,
-```
+- Ensure the Laravel backend is running (default at `http://127.0.0.1:8000`) before starting the React frontend to allow API requests.
+- Sanctum is configured for SPA authentication using cookies; make sure both frontend and backend run on compatible domains or configure CORS accordingly.
 
 ---
-
-## 🌐 Frontend Setup (React)
-
-### Prerequisites
-
-- Node.js (v16 or later)
-- npm or yarn
-
-### Installation Steps
-
-1. **Navigate to frontend folder:**
-
-```bash
-cd ../qatra-frontend
-```
-
-2. **Install React dependencies:**
-
-```bash
-npm install
-# or
-yarn install
-```
-
-3. **Create a `.env` file:**
-
-```env
-REACT_APP_API_URL=http://127.0.0.1:8000
-```
-
-4. **Run the frontend app:**
-
-```bash
-npm start
-# or
-yarn start
-```
-
-Frontend runs on: `http://localhost:3000`
-
----
-
-## 🧪 Testing Authentication (Login, Register)
-
-- Open your React app.
-- Try to register or login using the UI.
-- API cookies will be handled via `withCredentials`.
-
----
-
-## 🗃 Technologies Used
-
-- **Backend:** Laravel, Sanctum, MySQL
-- **Frontend:** React, Axios, Bootstrap (optional)
-
----
-
-## 📝 License
-
-This project is open-source and available under the [MIT License](LICENSE).
-
----
-
-## 👤 Author
-
-**Nourddine**  
-GitHub: [@nourddine20](https://github.com/nourddine20)
-
-Feel free to contribute, suggest improvements, or fork this repo! ❤️
+Feel free to customize the `.env` files as needed for your environment.
